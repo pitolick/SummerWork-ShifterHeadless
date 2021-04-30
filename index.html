@@ -61,55 +61,7 @@
 	<section id="event">
 		<div class="container event">
 			<h2 class="h2">夏イベント</h2>
-			<div class="event_tab">
-								<input type="radio" name="event" id="sample1">
-								<input type="radio" name="event" id="sample2" checked>
-								<input type="radio" name="event" id="sample3">
-								<input type="radio" name="event" id="sample4">
-								<input type="radio" name="event" id="sample5">
-								<input type="radio" name="event" id="sample6">
-
-								<div class="tab-selecter">
-										<label for="sample1">Sample Event 1</label>
-										<label for="sample2">Sample Event 2</label>
-										<label for="sample3">Sample Event 3</label>
-										<label for="sample4">Sample Event 4</label>
-										<label for="sample5">Sample Event 5</label>
-										<label for="sample6">Sample Event 6</label>
-									</div>
-				<div class="tab-contents">
-										<div class="tab-item sample1">
-						<p class="text">detail 1</p>
-						<p class="next"><a href="/event/sample1.html">続きを見る ▶</a></p>
-					</div>
-										<div class="tab-item sample2">
-						<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero reprehenderit autem molestias totam qui non tempore dolore.<br>
-					Dignissimos, modi soluta natus quod suscipit tempora possimus odit totam sed excepturi facere commodi, nesciunt saepe, sunt ipsa magnam quaerat ea esse cum dicta.<br>
-					Ratione magni officia fugit tempore quos, non molestias repudiandae nulla suscipit veniam quo doloribus quidem facilis quis accusantium delectus nam perspiciatis eligendi repellat nemo soluta atque aut error assumenda. Similique illo voluptatum molestias nulla.<br>
-					Dolores deserunt totam modi fugiat, maiores, fuga esse praesentium adipisci at, hic ducimus. Veniam, perspiciatis, aliquam?<br>
-					Unde cumque nemo suscipit animi pariatur labore totam quisquam aspernatur dolor atque. Placeat doloremque vitae deserunt eos, culpa error mollitia.<br>
-					Quis porro nulla libero laboriosam rerum quos eum omnis deserunt maxime sint ex ut, eaque numquam dolorem non dicta molestias repudiandae quas obcaecati.<br>
-					Voluptatum cumque quis ut. Neque, aliquid.</p>
-						<p class="next"><a href="/event/sample2.html">続きを見る ▶</a></p>
-					</div>
-										<div class="tab-item sample3">
-						<p class="text">detail 3</p>
-						<p class="next"><a href="/event/sample3.html">続きを見る ▶</a></p>
-					</div>
-										<div class="tab-item sample4">
-						<p class="text">detail 4</p>
-						<p class="next"><a href="/event/sample4.html">続きを見る ▶</a></p>
-					</div>
-										<div class="tab-item sample5">
-						<p class="text">detail 5</p>
-						<p class="next"><a href="/event/sample5.html">続きを見る ▶</a></p>
-					</div>
-										<div class="tab-item sample6">
-						<p class="text">detail 6</p>
-						<p class="next"><a href="/event/sample6.html">続きを見る ▶</a></p>
-					</div>
-									</div>
-							</div>
+			<div class="event_tab"></div>
 		</div>
 	</section>
 
@@ -158,5 +110,29 @@
 	</nav>
 	<p id="copyright">Copyright &copy; Sample Co.,Ltd. All Rights Reserved.</p>
 </footer>
+
+<script src="includes/lib/js/jquery.min.js"></script>
+<script src="includes/lib/js/mustache.min.js"></script>
+<script src="includes/app/index.js"></script>
+
+<script type="text/template" id="event_tab">
+	{{#posts}}
+	<input type="radio" name="event" id="event_{{id}}">
+	{{/posts}}
+	<div class="tab-selecter">
+		{{#posts}}
+		<label for="event_{{id}}">{{title.rendered}}</label>
+		{{/posts}}
+	</div>
+
+	<div class="tab-contents">
+		{{#posts}}
+		<div class="tab-item event_{{id}}">
+			<p class="text">{{{excerpt.rendered}}}</p>
+			<p class="next"><a href="/event/event_{{id}}.html">続きを見る ▶</a></p>
+		</div>
+		{{/posts}}
+	</div>
+</script>
 </body>
 </html>

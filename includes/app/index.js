@@ -8,8 +8,8 @@ jQuery(document).ready(function ($) {
 
             this.getSiteData()
             this.loadPosts()
-            this.loadCategories()
-            this.loadEvents()
+            // this.loadCategories()
+            // this.loadEvents()
 
         },
         // 読み込みイベント
@@ -46,12 +46,14 @@ jQuery(document).ready(function ($) {
                     var posts = {
                         posts: response
                     }
-
-                    var template = $( '#blog-post-template' ).html()
-                    var output = $( '#main-content' )
+                    // 夏イベント
+                    var template = $( '#event_tab' ).html()
+                    var output = $( '.event_tab' )
                     // Mustache.js を利用してテンプレートパーツにデータを出力
                     var result = Mustache.to_html( template, posts )
                     output.append( result )
+                    // 初期表示として一番最初をactiveに
+                    output.find("input:first").prop("checked",true)
 
                 })
                 // レスポンスがなければアラートを表示
